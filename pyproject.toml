@@ -78,6 +78,10 @@ vllm = [
 all = [
   "smolagents[audio,docker,e2b,gradio,litellm,mcp,mlx-lm,openai,telemetry,transformers,vision]",
 ]
+# Windows-compatible options without Apple-specific dependencies
+windows = [
+  "smolagents[audio,docker,e2b,gradio,litellm,mcp,openai,telemetry,transformers,vision]",
+]
 quality = [
   "ruff>=0.9.0",
 ]
@@ -90,6 +94,15 @@ test = [
   "smolagents[all]",
   "rank-bm25", # For test_all_docs
   "Wikipedia-API>=0.8.1",
+]
+# Windows-compatible dev dependencies
+dev-windows = [
+  "smolagents[quality,windows]",
+  "pandas>=2.2.3",
+  "pytest>=8.1.0",
+  "pytest-datadir",
+  "python-dotenv>=1.0.1",
+  "sqlalchemy", # for ./examples
 ]
 dev = [
   "smolagents[quality,test]",
