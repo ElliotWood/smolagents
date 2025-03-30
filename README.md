@@ -144,6 +144,12 @@ model = AzureOpenAIServerModel(
 ```
 </details>
 
+## From src
+
+```
+uv pip install -r pyproject.toml --all-extras
+```
+
 ## CLI
 
 You can run agents from CLI using two commands: `smolagent` and `webagent`.
