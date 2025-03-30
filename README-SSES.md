@@ -47,7 +47,7 @@ To install the SSES extension, clone the repository and install in development m
 ```bash
 git clone https://github.com/ElliotWood/smolagents.git
 cd smolagents
-pip install -e ".[dev]"
+uv pip install -r pyproject.toml -e ".[dev]"
 ```
 
 ### Basic Usage
