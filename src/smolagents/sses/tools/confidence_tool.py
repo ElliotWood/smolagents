@@ -14,15 +14,24 @@ class ConfidenceAssessorTool(Tool):
     """Tool for assessing agent confidence"""
 
     def __init__(self, memory_path="./memory/confidence"):
-        super().__init__(
-            name="assess_confidence",
-            description="Assess your confidence in handling this task",
-            function=self.__call__,
-        )
+        self.name = "assess_confidence"
+        self.description = "Assess your confidence in handling this task"
+        self.inputs = {
+            "task_description": {
+                "type": "string",
+                "description": "The task to assess confidence for"
+            },
+            "domain": {
+                "type": "string",
+                "description": "Optional domain for the task"
+            }
+        }
+        self.output_type = "object"
         self.memory_path = Path(memory_path)
         os.makedirs(self.memory_path, exist_ok=True)
+        self.is_initialized = True
 
-    def __call__(self, task_description, domain=None):
+    def forward(self, task_description, domain=None):
         """Assess confidence for a given task"""
         factors = self._analyze_factors(task_description, domain)
         confidence_score = self._calculate_confidence(factors)
