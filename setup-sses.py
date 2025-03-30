@@ -59,7 +59,7 @@ print(result)
 
 # List memory paths
 paths = coordinator.get_memory_paths()
-print("\nMemory paths:")
+print("Memory paths:")
 for name, path in paths.items():
     print(f"  - {name}: {path}")
 """
