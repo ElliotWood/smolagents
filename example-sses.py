@@ -3,10 +3,11 @@
 from smolagents.sses.coordinator.core_coordinator import CoreCoordinator
 from smolagents.agents import CodeAgent
 
-# You would replace this with your actual model
+# Define a proper mock model that implements the interface expected by Smolagents
 class MockModel:
-    def generate(self, prompt):
-        return "This is a mock response for testing SSES."
+    def __call__(self, messages, *args, **kwargs):
+        # The model should take messages and return a ChatMessage-like object
+        return {"content": "This is a mock response for testing SSES."}
 
 # Create coordinator with core layer tools
 coordinator = CoreCoordinator(memory_path="./memory")
