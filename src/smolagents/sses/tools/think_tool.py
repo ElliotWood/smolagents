@@ -22,7 +22,8 @@ class ThinkTool(Tool):
             },
             "action": {
                 "type": "string",
-                "description": "Action to perform (reflect, assess_confidence, evaluate, extract_patterns)"
+                "description": "Action to perform (reflect, assess_confidence, evaluate, extract_patterns)",
+                "nullable": True
             }
         }
         self.output_type = "string"
@@ -79,5 +80,5 @@ if __name__ == "__main__":
     tool = ThinkTool("./test_memory/thoughts")
 
     # Test basic functionality
-    result = tool._think("I need to solve this step by step. First, I'll...")
+    result = tool.forward("I need to solve this step by step. First, I'll...")
     print(result)
