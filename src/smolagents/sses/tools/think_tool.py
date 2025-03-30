@@ -13,14 +13,25 @@ class ThinkTool(Tool):
     """Tool for agent to think and reason explicitly"""
 
     def __init__(self, memory_path="./memory/thoughts"):
-        super().__init__(
-            name="think", description="Use this tool to think through problems step by step", function=self._think
-        )
+        self.name = "think"
+        self.description = "Use this tool to think through problems step by step"
+        self.inputs = {
+            "thought": {
+                "type": "string",
+                "description": "The thought process to record"
+            },
+            "action": {
+                "type": "string",
+                "description": "Action to perform (reflect, assess_confidence, evaluate, extract_patterns)"
+            }
+        }
+        self.output_type = "string"
         self.memory_path = Path(memory_path)
         self.evolution_tools = {}
         os.makedirs(self.memory_path, exist_ok=True)
+        self.is_initialized = True
 
-    def _think(self, thought, action="reflect"):
+    def forward(self, thought, action="reflect"):
         """Record thought process and handle actions"""
         # Create unique filename
         timestamp = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
