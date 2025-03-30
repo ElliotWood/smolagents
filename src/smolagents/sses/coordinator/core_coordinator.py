@@ -14,8 +14,8 @@ class CoreCoordinator:
 
     def _initialize_tools(self):
         """Initialize core layer tools"""
-        from smolagents.sses.tools.think_tool import ThinkTool
         from smolagents.sses.tools.confidence_tool import ConfidenceAssessorTool
+        from smolagents.sses.tools.think_tool import ThinkTool
 
         thoughts_path = self.memory_path / "thoughts"
         confidence_path = self.memory_path / "confidence"
