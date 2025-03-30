@@ -23,7 +23,8 @@ class ConfidenceAssessorTool(Tool):
             },
             "domain": {
                 "type": "string",
-                "description": "Optional domain for the task"
+                "description": "Optional domain for the task",
+                "nullable": True
             }
         }
         self.output_type = "object"
@@ -118,9 +119,9 @@ if __name__ == "__main__":
     tool = ConfidenceAssessorTool("./test_memory/confidence")
 
     # Test basic functionality
-    result = tool("Calculate the compound interest on $2000 at 3% for 5 years", domain="finance")
+    result = tool.forward("Calculate the compound interest on $2000 at 3% for 5 years", domain="finance")
     print(json.dumps(result, indent=2))
 
     # Test with different task
-    result = tool("What is the meaning of life?")
+    result = tool.forward("What is the meaning of life?")
     print(json.dumps(result, indent=2))
