@@ -1,0 +1,32 @@
+evaluation_criteria:
+  directory_structure:
+    - required_directories: [src, tests, docs, .github/workflows, memory]
+    - init_files: "All Python packages have __init__.py"
+    - readme_files: "README.md in major directories"
+    - naming_conventions: "Consistent snake_case/kebab-case"
+    - permissions: "Directory permissions check"
+
+  github_actions:
+    - workflow_files: ".github/workflows/*.yml exists"
+    - triggers: "Correct CI/CD triggers"
+    - error_handling: "Failure handling in workflows"
+    - memory_integration: "SSES-memory versioning integration"
+    - execution_tests: "Workflow dry-run validation"
+
+  memory_versioning:
+    - changelog_generation: "Automatic changelog creation"
+    - storage_structure: "Versioned memory organization"
+    - version_tracking: "Git commit hash tracking"
+    - rollback_mechanism: "Version rollback capability"
+
+  benchmarks:
+    - metric_definitions: "Benchmark KPIs defined"
+    - measurement_methodology: "Consistent measurement approach"
+    - result_storage: "JSON results archiving"
+    - comparison_tooling: "Version-to-version comparison"
+    - execution_tests: "Benchmark test suite"
+
+validation_requirements:
+  - independent_evaluator: true
+  - test_repository_changes: 3
+  - prd_spec_revision: 2.1

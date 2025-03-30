@@ -1,38 +1,36 @@
-name: SSES Memory Versioning
+name: Memory Versioning
 
 on:
   push:
-    branches: [ main, sses-implementation ]
+    branches: [main]
     paths:
-      - 'src/smolagents/sses/memory/**'
+      - 'memory/**'
 
 jobs:
-  version:
+  version-track:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
-      with:
-        fetch-depth: 0  # Fetch all history for proper changelogs
-    
-    - name: Set up Python
-      uses: actions/setup-python@v2
-      with:
-        python-version: '3.10'
-    
-    - name: Install dependencies
-      run: |
-        python -m pip install --upgrade pip
-        pip install pyyaml
-        
-    - name: Process memory changes
-      run: |
-        python src/smolagents/sses/tools/memory_processor.py
-        
-    - name: Commit changes
-      uses: stefanzweifel/git-auto-commit-action@v4
-      with:
-        commit_message: "Memory Update [automated]"
-        file_pattern: src/smolagents/sses/memory/**
-        commit_user_name: "Memory Processor"
-        commit_user_email: "memory-processor@smolagents-sses.dev"
-        commit_author: "Memory Processor <memory-processor@smolagents-sses.dev>"
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Track memory changes
+        run: |
+          TIMESTAMP=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
+          echo "MEMORY_VERSION=$TIMESTAMP-${GITHUB_SHA::7}" >> $GITHUB_ENV
+          
+          mkdir -p memory/versions/${GITHUB_ENV_MEMORY_VERSION}
+          cp -r memory/* memory/versions/${GITHUB_ENV_MEMORY_VERSION}/
+          
+          git config --global user.name "SSES Memory Versioning"
+          git config --global user.email "smes-bot@example.com"
+          git add memory/versions
+          git commit -m "Versioning snapshot ${GITHUB_ENV_MEMORY_VERSION}"
+          git push origin main
+
+      - name: Update CHANGELOG
+        run: |
+          echo "\n## ${GITHUB_ENV_MEMORY_VERSION} - $(date +%Y-%m-%d)" >> memory/CHANGELOG.md
+          git diff --name-only HEAD^ HEAD -- memory/ | grep -v versions/ >> memory/CHANGELOG.md
+          git add memory/CHANGELOG.md
+          git commit -m "Update changelog for ${GITHUB_ENV_MEMORY_VERSION}"
