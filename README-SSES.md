@@ -91,6 +91,104 @@ All memory is stored in a versioned structure:
   /benchmarks     # Benchmark results
 ```
 
+## RACI Matrix
+
+This RACI (Responsible, Accountable, Consulted, Informed) matrix defines roles and responsibilities for the SSES project:
+
+| Activity/Deliverable | AI Assistant | Human (Elliot) |
+|----------------------|--------------|----------------|
+| **Project Management** |  |  |
+| Task Prioritization | R/A | C/I |
+| Risk Management | R/A | C/I |
+| Decision Escalation | R | A |
+| Progress Reporting | R/A | I |
+| **Development** |  |  |
+| Code Implementation | R/A | I |
+| Technical Design | R/A | C |
+| Architecture Decisions | R | A |
+| Documentation | R/A | I |
+| **Quality Assurance** |  |  |
+| Test Planning | R/A | I |
+| Test Execution | R/A | I |
+| Independent Evaluation | R/A | I |
+| Bug Fixing | R/A | C |
+| **Release Management** |  |  |
+| Version Control | R/A | I |
+| Release Preparation | R | A |
+| Deployment | R | A |
+| Release Notes | R/A | C |
+| **Phase 0: Repository Setup** |  |  |
+| Repository Structure | R/A | I |
+| GitHub Actions Configuration | R/A | I |
+| Memory Versioning System | R/A | C |
+| Benchmark Implementation | R/A | C |
+| **Phase 1: Core Layer** |  |  |
+| ThinkTool Implementation | R/A | I |
+| ConfidenceAssessorTool Implementation | R/A | I |
+| Core Layer Integration | R/A | I |
+| Core Layer Testing | R/A | I |
+| **Phase 2: Evolution Layer** |  |  |
+| PromptVersioningTool Implementation | R/A | I |
+| EvaluationTool Implementation | R/A | I |
+| KnowledgeRepositoryTool Implementation | R/A | I |
+| Evolution Layer Integration | R/A | I |
+| Evolution Layer Testing | R/A | I |
+| **Phase 3: Advanced Layer** |  |  |
+| SpecializationTool Implementation | R/A | I |
+| DomainDiscoveryTool Implementation | R/A | I |
+| TaskRouterTool Implementation | R/A | I |
+| Advanced Layer Integration | R/A | I |
+| Advanced Layer Testing | R/A | I |
+| **Phase 4: Integration and Release** |  |  |
+| Full Integration | R/A | C |
+| Final Benchmarking | R/A | I |
+| Complete Documentation | R/A | C |
+| Final Release | R | A |
+
+### RACI Definition
+- **R (Responsible)**: Who performs the work
+- **A (Accountable)**: Who ultimately answers for the activity
+- **C (Consulted)**: Who provides input before and during the activity
+- **I (Informed)**: Who is kept up-to-date on progress
+
+## Decision Escalation Criteria
+
+The AI Assistant will escalate to the Human (Elliot) in the following situations:
+
+1. **Critical Design Decisions**: Fundamental architectural choices that significantly impact the system design
+2. **Technical Roadblocks**: Challenges that cannot be resolved within the AI's capabilities
+3. **Quality Issues**: Significant quality concerns that might compromise system integrity
+4. **Scope Changes**: Any proposed changes to the project scope or objectives
+5. **External Dependencies**: Issues involving integration with external systems
+6. **Risk Elevation**: When a previously identified risk changes in severity or probability
+7. **Release Approval**: Final approval for releases
+
+## Implementation Plan
+
+The implementation follows a phased approach:
+
+1. **Phase 0**: Repository Setup (Complete)
+2. **Phase 1**: Core Layer Implementation (Complete)
+3. **Phase 2**: Evolution Layer Implementation (In Progress)
+4. **Phase 3**: Advanced Layer Implementation (Planned)
+5. **Phase 4**: Integration and Release (Planned)
+
+Each phase includes:
+- Implementation of components
+- Testing and validation
+- Documentation
+- Independent evaluation
+
+## Quality Metrics
+
+The project aims to meet the following quality metrics:
+
+- Test coverage > 90% for all components
+- Documentation for all public APIs
+- Performance benchmarks for each layer
+- Successful execution of all test suites
+- Completion of independent evaluations
+
 ## Current Status
 
 The SSES project is under active development. Currently, the Core Layer is implemented and functional. The Evolution and Advanced Layers are planned for future releases.
